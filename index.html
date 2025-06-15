@@ -47,21 +47,21 @@
         color: red;
       }
 
-      .container {
+      .video-wrapper {
         position: relative;
         width: 100%;
-        height: 100vh;
+        padding-top: 177.78%; /* 720/1280 = 0.5625, הפוך כי זה אנכי */
         overflow: hidden;
+        z-index: -1;
       }
 
-      video {
+      .video-wrapper video {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
-        z-index: -1;
       }
 
       .overlay {
@@ -72,12 +72,18 @@
         font-size: 8vw;
         font-weight: bold;
         color: white;
+        z-index: 1;
       }
 
       .subtitle {
         font-size: 4vw;
         margin-top: 10px;
         color: white;
+      }
+
+      .container {
+        position: relative;
+        width: 100%;
       }
 
       .content {
@@ -109,7 +115,6 @@
         margin-top: 20px;
       }
 
-      /* רספונסיביות */
       @media (max-width: 768px) {
         nav a {
           font-size: 1rem;
@@ -174,12 +179,11 @@
     </nav>
 
     <div class="container">
-      <video autoplay muted loop>
-        <source
-          src="תיקייה/מגן דוד אדום אדום מסכם את שנת פעילות 2024 (720 X 1280).mp4"
-          type="video/mp4"
-        />
-      </video>
+      <div class="video-wrapper">
+        <video autoplay muted loop playsinline>
+          <source src="תיקייה/מגן דוד אדום אדום מסכם את שנת פעילות 2024 (720 X 1280).mp4" type="video/mp4" />
+        </video>
+      </div>
       <div class="overlay">
         צוות חץ
         <div class="subtitle">חוד החנית של ארגוני ההצלה</div>
