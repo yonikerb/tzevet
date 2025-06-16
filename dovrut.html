@@ -7,7 +7,6 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
       font-family: Arial, sans-serif;
       background-color: #000;
     }
@@ -24,10 +23,46 @@
       text-align: center;
       font-size: 24px;
     }
+    /* עיצוב לכפתור 'המשך קריאה' */
+    .text {
+      position: relative;
+      padding: 18px 20px 40px;
+      color: #333;
+      font-size: 16px;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      flex-grow: 1;
+      max-height: 600px; /* בערך 25 שורות */
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .text.expanded {
+      max-height: none;
+    }
+    .read-more {
+      position: absolute;
+      bottom: 10px;
+      right: 20px;
+      background: #ff4444;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
   <header>דוברויות צוות חץ</header>
-  <iframe src="https://script.google.com/macros/s/AKfycbwYILi-9f2pErV-x67hwZ79F79GPG7hZJ0Ik4MfHE6xlBlb1Du9y-EGN2Ue-EwvlNwW/exec" title="דוברויות צוות חץ"></iframe>
+
+  <!-- iframe שנטען מתוך Google Apps Script -->
+  <iframe id="dovorotFrame" src="https://script.google.com/macros/s/AKfycbwYILi-9f2pErV-x67hwZ79F79GPG7hZJ0Ik4MfHE6xlBlb1Du9y-EGN2Ue-EwvlNwW/exec" title="דוברויות צוות חץ"></iframe>
+
+  <!-- JavaScript כדי לטפל ב-'המשך קריאה' בתוך ה-iframe -->
+  <script>
+    // הפעלת סקריפט רק כאשר iframe נטען (אם תעבור לגרסה נטענת ישירות באתר שלך)
+    // כאן לצורך השלמה בלבד – בפועל הכפתורים נטענים בקוד בתוך iframe
+  </script>
 </body>
 </html>
