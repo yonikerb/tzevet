@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>טעימה מפעילות הצוות</title>
+  <link rel="icon" type="image/png" href="תיקייה/לוגו.png" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+    }
+
+    iframe {
+      width: 100%;
+      min-height: 100vh;
+      border: none;
+      display: block;
+    }
+
+    header {
+      background-color: #222;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+    }
+
+    /* כפתור הלוגו עם אנימציית התנודדות */
+    .logo-button {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      z-index: 1001;
+      animation: sway 2.5s ease-in-out infinite alternate;
+    }
+
+    .logo-button img {
+      width: 120px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.4s ease, box-shadow 0.3s ease;
+    }
+
+    .logo-button img:hover {
+      transform: translateY(-10px) rotate(-25deg) scale(1.1);
+      box-shadow: 0 6px 18px rgba(255, 255, 255, 0.5);
+      animation-play-state: paused;
+    }
+
+    @keyframes sway {
+      0% {
+        transform: rotate(-15deg);
+      }
+      50% {
+        transform: rotate(15deg);
+      }
+      100% {
+        transform: rotate(-15deg);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .logo-button img {
+        width: 90px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- כפתור הלוגו -->
+  <a href="index.html" class="logo-button" title="חזור לדף הראשי">
+    <img src="תיקייה/לוגו.png" alt="חזור לדף הראשי" />
+  </a>
+
+  <header>טעימה מפעילות הצוות</header>
+
+  <iframe src="https://script.google.com/macros/s/AKfycbwuu14QKeNG7bx8J_MefMu_Z8vu2WhndLwyXWGIRSz1HiZSqmwi3CnXEB8_ODmZRlgWZA/exec" title="טעימה מפעילות הצוות"></iframe>
+</body>
+</html>
