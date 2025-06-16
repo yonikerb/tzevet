@@ -2,9 +2,7 @@
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>תרומה צות-חץ</title>
-
-  <!-- טעינת אייקון מהתיקייה המקומית -->
+  <title>תרומה צוות-חץ</title>
   <link rel="icon" type="image/png" href="תיקייה/לוגו.png" />
 
   <style>
@@ -28,9 +26,54 @@
       text-align: center;
       font-size: 24px;
     }
+
+    /* כפתור הלוגו עם אנימציית התנודדות */
+    .logo-button {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      z-index: 1001;
+      animation: sway 2.5s ease-in-out infinite alternate;
+    }
+
+    .logo-button img {
+      width: 120px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.4s ease, box-shadow 0.3s ease;
+    }
+
+    .logo-button img:hover {
+      transform: translateY(-10px) rotate(-25deg) scale(1.1);
+      box-shadow: 0 6px 18px rgba(255, 255, 255, 0.5);
+      animation-play-state: paused;
+    }
+
+    @keyframes sway {
+      0% {
+        transform: rotate(-15deg);
+      }
+      50% {
+        transform: rotate(15deg);
+      }
+      100% {
+        transform: rotate(-15deg);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .logo-button img {
+        width: 90px;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- כפתור לוגו צף שמחזיר לעמוד הראשי -->
+  <a href="index.html" class="logo-button" title="חזור לדף הראשי">
+    <img src="תיקייה/לוגו.png" alt="חזור לדף הראשי" />
+  </a>
+
   <header>תרומה צוות-חץ</header>
 
   <iframe src="https://www.matara.pro/nedarimplus/online/?mosad=7014603" title="תרומה צוות חץ"></iframe>
