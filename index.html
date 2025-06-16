@@ -109,43 +109,43 @@
         margin-top: 20px;
       }
 
-      /* כפתור הלוגו עם אנימציית התנודדות */
+      /* כפתור הלוגו עם אנימציית התנודדות מוגברת */
       .logo-button {
         position: fixed;
-        top: 60px;
+        top: 80px;
         right: 20px;
         z-index: 1001;
-        animation: sway 3s ease-in-out infinite alternate;
+        animation: sway 2.5s ease-in-out infinite alternate;
       }
 
       .logo-button img {
-        width: 80px;
+        width: 120px;
         height: auto;
         cursor: pointer;
         transition: transform 0.4s ease, box-shadow 0.3s ease;
       }
 
       .logo-button img:hover {
-        transform: translateY(-5px) rotate(-10deg) scale(1.05);
-        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
-        animation-play-state: paused; /* עוצר את תנודדת הרקע כשעוברים עכבר */
+        transform: translateY(-10px) rotate(-25deg) scale(1.1);
+        box-shadow: 0 6px 18px rgba(255, 255, 255, 0.5);
+        animation-play-state: paused; /* עוצר את התנודה כשעוברים עכבר */
       }
 
       @keyframes sway {
         0% {
-          transform: rotate(-5deg);
+          transform: rotate(-15deg);
         }
         50% {
-          transform: rotate(5deg);
+          transform: rotate(15deg);
         }
         100% {
-          transform: rotate(-5deg);
+          transform: rotate(-15deg);
         }
       }
 
       @media (max-width: 600px) {
         .logo-button img {
-          width: 60px;
+          width: 90px;
         }
       }
 
