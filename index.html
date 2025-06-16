@@ -48,22 +48,20 @@
       }
 
       .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
         position: relative;
+        width: 100%;
+        height: 100vh;
         overflow: hidden;
-        background-color: black;
-        padding-top: 60px; /* התאמה לנווט קבוע */
       }
 
       video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
         height: 100%;
-        width: auto;
-        max-width: 100%;
-        object-fit: contain;
-        display: block;
+        object-fit: cover;
+        z-index: -1;
       }
 
       .overlay {
@@ -71,27 +69,27 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 4vw;
+        font-size: 8vw;
         font-weight: bold;
         color: white;
-        text-shadow: 1px 1px 5px black;
-        z-index: 2;
-        text-align: center;
       }
 
       .subtitle {
-        font-size: 2vw;
+        font-size: 4vw;
         margin-top: 10px;
+        color: white;
       }
 
       .content {
-        padding: 40px 20px 20px;
-        font-size: 2vw;
+        padding: 80px 20px 20px;
+        font-size: 2.5vw;
+        color: white;
       }
 
       .handwritten-text {
         font-family: "Dancing Script", cursive;
         font-size: 2rem;
+        color: white;
         margin-top: 10px;
       }
 
@@ -99,6 +97,7 @@
         font-size: 1rem;
         max-width: 90%;
         margin: 10px auto;
+        color: white;
       }
 
       .background-image {
@@ -110,13 +109,20 @@
         margin-top: 20px;
       }
 
+      /* רספונסיביות */
       @media (max-width: 768px) {
+        nav a {
+          font-size: 1rem;
+          padding: 8px 15px;
+          margin: 5px;
+        }
+
         .overlay {
-          font-size: 6vw;
+          font-size: 10vw;
         }
 
         .subtitle {
-          font-size: 3vw;
+          font-size: 5vw;
         }
 
         .content {
@@ -127,6 +133,10 @@
           font-size: 1.5rem;
         }
 
+        .team-description {
+          font-size: 0.9rem;
+        }
+
         .background-image {
           height: 200px;
         }
@@ -134,11 +144,11 @@
 
       @media (max-width: 480px) {
         .overlay {
-          font-size: 8vw;
+          font-size: 12vw;
         }
 
         .subtitle {
-          font-size: 4vw;
+          font-size: 6vw;
         }
 
         .content {
@@ -147,6 +157,10 @@
 
         .handwritten-text {
           font-size: 1.2rem;
+        }
+
+        .team-description {
+          font-size: 0.85rem;
         }
       }
     </style>
@@ -160,8 +174,11 @@
     </nav>
 
     <div class="container">
-      <video autoplay muted loop playsinline>
-        <source src="תיקייה/מגן דוד אדום אדום מסכם את שנת פעילות 2024 (720 X 1280).mp4" type="video/mp4" />
+      <video autoplay muted loop>
+        <source
+          src="תיקייה/מגן דוד אדום אדום מסכם את שנת פעילות 2024 (720 X 1280).mp4"
+          type="video/mp4"
+        />
       </video>
       <div class="overlay">
         צוות חץ
