@@ -2,7 +2,7 @@
 <html lang="he">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>צוות חץ - מגן דוד אדום</title>
     <style>
       * {
@@ -109,23 +109,43 @@
         margin-top: 20px;
       }
 
-      /* כפתור הלוגו הקבוע */
+      /* כפתור הלוגו עם אנימציית התנודדות */
       .logo-button {
         position: fixed;
-        top: 20px;
+        top: 60px;
         right: 20px;
         z-index: 1001;
+        animation: sway 3s ease-in-out infinite alternate;
       }
 
       .logo-button img {
-        width: 60px;
+        width: 80px;
         height: auto;
         cursor: pointer;
+        transition: transform 0.4s ease, box-shadow 0.3s ease;
+      }
+
+      .logo-button img:hover {
+        transform: translateY(-5px) rotate(-10deg) scale(1.05);
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+        animation-play-state: paused; /* עוצר את תנודדת הרקע כשעוברים עכבר */
+      }
+
+      @keyframes sway {
+        0% {
+          transform: rotate(-5deg);
+        }
+        50% {
+          transform: rotate(5deg);
+        }
+        100% {
+          transform: rotate(-5deg);
+        }
       }
 
       @media (max-width: 600px) {
         .logo-button img {
-          width: 45px;
+          width: 60px;
         }
       }
 
@@ -186,8 +206,7 @@
     </style>
   </head>
   <body>
-    <!-- כפתור לוגו קבוע -->
-    <a href="index.html" class="logo-button">
+    <a href="index.html" class="logo-button" title="חזור לדף הראשי">
       <img src="תיקייה/לוגו.png" alt="חזור לדף הראשי" />
     </a>
 
