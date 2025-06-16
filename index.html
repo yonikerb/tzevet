@@ -109,6 +109,26 @@
         margin-top: 20px;
       }
 
+      /* כפתור הלוגו הקבוע */
+      .logo-button {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1001;
+      }
+
+      .logo-button img {
+        width: 60px;
+        height: auto;
+        cursor: pointer;
+      }
+
+      @media (max-width: 600px) {
+        .logo-button img {
+          width: 45px;
+        }
+      }
+
       /* רספונסיביות */
       @media (max-width: 768px) {
         nav a {
@@ -166,6 +186,11 @@
     </style>
   </head>
   <body>
+    <!-- כפתור לוגו קבוע -->
+    <a href="index.html" class="logo-button">
+      <img src="תיקייה/לוגו.png" alt="חזור לדף הראשי" />
+    </a>
+
     <nav>
       <a href="news.html" onclick="changeColor(this)">מידע וחדשות</a>
       <a href="spoken.html" onclick="changeColor(this)">דוברויות</a>
