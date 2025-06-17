@@ -109,6 +109,7 @@
         margin-top: 20px;
       }
 
+      /* כפתור הלוגו עם אנימציית התנודדות מוגברת */
       .logo-button {
         position: fixed;
         top: 80px;
@@ -127,7 +128,7 @@
       .logo-button img:hover {
         transform: translateY(-10px) rotate(-25deg) scale(1.1);
         box-shadow: 0 6px 18px rgba(255, 255, 255, 0.5);
-        animation-play-state: paused;
+        animation-play-state: paused; /* עוצר את התנודה כשעוברים עכבר */
       }
 
       @keyframes sway {
@@ -148,6 +149,7 @@
         }
       }
 
+      /* רספונסיביות */
       @media (max-width: 768px) {
         nav a {
           font-size: 1rem;
@@ -216,9 +218,9 @@
     </nav>
 
     <div class="container">
-      <video autoplay muted loop playsinline>
+      <video autoplay muted loop>
         <source
-          src="תיקייה/mda_summary2024.mp4"
+          src="תיקייה/מגן דוד אדום אדום מסכם את שנת פעילות 2024 (720 X 1280).mp4"
           type="video/mp4"
         />
       </video>
