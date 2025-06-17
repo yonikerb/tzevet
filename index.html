@@ -52,8 +52,6 @@
         width: 100%;
         height: 100vh;
         overflow: hidden;
-        background: url("תיקייה/images.jpg") no-repeat center center/cover;
-        /* ברירת מחדל רקע תמונה */
       }
 
       video {
@@ -64,13 +62,6 @@
         height: 100%;
         object-fit: cover;
         z-index: -1;
-        display: block;
-        background: black;
-      }
-
-      /* אם הוידאו מוסתר, נסתיר אותו */
-      video.hidden {
-        display: none;
       }
 
       .overlay {
@@ -112,13 +103,12 @@
       .background-image {
         width: 100%;
         height: 300px;
-        background-image: url("תיקייה/images.jpg");
+        background-image: url("101/images.jpg");
         background-size: cover;
         background-position: center;
         margin-top: 20px;
       }
 
-      /* כפתור הלוגו עם אנימציית התנודדות מוגברת */
       .logo-button {
         position: fixed;
         top: 80px;
@@ -137,7 +127,7 @@
       .logo-button img:hover {
         transform: translateY(-10px) rotate(-25deg) scale(1.1);
         box-shadow: 0 6px 18px rgba(255, 255, 255, 0.5);
-        animation-play-state: paused; /* עוצר את התנודה כשעוברים עכבר */
+        animation-play-state: paused;
       }
 
       @keyframes sway {
@@ -158,7 +148,6 @@
         }
       }
 
-      /* רספונסיביות */
       @media (max-width: 768px) {
         nav a {
           font-size: 1rem;
@@ -216,7 +205,7 @@
   </head>
   <body>
     <a href="index.html" class="logo-button" title="חזור לדף הראשי">
-      <img src="תיקייה/לוגו.png" alt="חזור לדף הראשי" />
+      <img src="101/לוגו.png" alt="חזור לדף הראשי" />
     </a>
 
     <nav>
@@ -226,17 +215,10 @@
       <a href="יצירת קשר.html" onclick="changeColor(this)">צור קשר</a>
     </nav>
 
-    <div class="container" id="videoContainer">
-      <video
-        id="backgroundVideo"
-        autoplay
-        muted
-        playsinline
-        loop
-        preload="auto"
-      >
-        <source src="תיקייה/101.mp4" type="video/mp4" />
-        הדפדפן שלך לא תומך בווידאו.
+    <div class="container">
+      <video autoplay muted loop playsinline webkit-playsinline preload="metadata">
+        <source src="101/101.mp4" type="video/mp4" />
+        הדפדפן שלך אינו תומך בסרטונים.
       </video>
       <div class="overlay">
         צוות חץ
@@ -260,47 +242,6 @@
         buttons.forEach((button) => button.classList.remove("active"));
         element.classList.add("active");
       }
-
-      // ניהול טעינת הוידאו עם timeout ל-10 שניות
-      document.addEventListener("DOMContentLoaded", () => {
-        const video = document.getElementById("backgroundVideo");
-        const container = document.getElementById("videoContainer");
-
-        let videoStarted = false;
-
-        // מנסה להפעיל את הוידאו (לעיתים חובה גם ב-JS)
-        const playPromise = video.play();
-
-        if (playPromise !== undefined) {
-          playPromise
-            .then(() => {
-              videoStarted = true;
-              // וידאו התחיל - מוסירים את הרקע (התמונה)
-              container.style.background = "none";
-              video.classList.remove("hidden");
-            })
-            .catch((error) => {
-              console.log("וידאו לא התחיל אוטומטית:", error);
-              // אם לא התחיל - נמתין ל-10 שניות עד שיפעל פיתרון fallback
-            });
-        }
-
-        // אחרי 10 שניות בודקים אם הוידאו התחיל
-        setTimeout(() => {
-          if (!videoStarted) {
-            // מסתירים את הוידאו ומחזירים רקע תמונה
-            video.classList.add("hidden");
-            container.style.background = 'url("תיקייה/images.jpg") no-repeat center center/cover';
-          }
-        }, 10000);
-
-        // אם הוידאו התחיל תוך כדי, נוכל להוריד את התמונה ברגע שיתחיל לשחק
-        video.addEventListener("playing", () => {
-          videoStarted = true;
-          container.style.background = "none";
-          video.classList.remove("hidden");
-        });
-      });
     </script>
   </body>
 </html>
