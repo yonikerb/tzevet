@@ -1,249 +1,231 @@
 <!DOCTYPE html>
 <html lang="he">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>צוות חץ - מגן דוד אדום</title>
-    <style>
-      * {
-        box-sizing: border-box;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>צוות חץ - מגן דוד אדום</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body, html {
+      margin: 0; padding: 0; height: 100%;
+      font-family: Arial, sans-serif;
+      background-color: black;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(0,0,0,0.7);
+      padding: 15px 0;
+      z-index: 10;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      margin: 5px 15px;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+    nav a:hover {
+      background-color: #444;
+    }
+    nav a.active {
+      color: red;
+    }
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      background: url('https://yonikerb.github.io/tzevet/101/101.jpg') no-repeat center center/cover; /* תמונת רקע fallback */
+    }
+    video#backgroundVideo {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      display: none; /* מוסתר בהתחלה */
+    }
+    .overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 8vw;
+      font-weight: bold;
+      color: white;
+      z-index: 5;
+      user-select: none;
+    }
+    .subtitle {
+      font-size: 4vw;
+      margin-top: 10px;
+      color: white;
+    }
+    .content {
+      padding: 80px 20px 20px;
+      font-size: 2.5vw;
+      color: white;
+      position: relative;
+      z-index: 5;
+    }
+    .handwritten-text {
+      font-family: "Dancing Script", cursive;
+      font-size: 2rem;
+      color: white;
+      margin-top: 10px;
+    }
+    .team-description {
+      font-size: 1rem;
+      max-width: 90%;
+      margin: 10px auto;
+      color: white;
+    }
+    /* כפתור הלוגו עם אנימציית התנודדות מוגברת */
+    .logo-button {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      z-index: 1001;
+      animation: sway 2.5s ease-in-out infinite alternate;
+    }
+    .logo-button img {
+      width: 120px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.4s ease, box-shadow 0.3s ease;
+    }
+    .logo-button img:hover {
+      transform: translateY(-10px) rotate(-25deg) scale(1.1);
+      box-shadow: 0 6px 18px rgba(255, 255, 255, 0.5);
+      animation-play-state: paused; /* עוצר את התנודה כשעוברים עכבר */
+    }
+    @keyframes sway {
+      0% {
+        transform: rotate(-15deg);
       }
-
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-        background-color: black;
-        color: white;
-        text-align: center;
+      50% {
+        transform: rotate(15deg);
       }
-
-      nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.7);
-        padding: 15px 0;
-        z-index: 10;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+      100% {
+        transform: rotate(-15deg);
       }
-
-      nav a {
-        color: white;
-        text-decoration: none;
-        font-size: 1.2rem;
-        margin: 5px 15px;
-        padding: 10px 20px;
-        border-radius: 5px;
-      }
-
-      nav a:hover {
-        background-color: #444;
-      }
-
-      nav a.active {
-        color: red;
-      }
-
-      .container {
-        position: relative;
-        width: 100%;
-        height: 100vh;
-        overflow: hidden;
-      }
-
-      video {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: -1;
-      }
-
-      .overlay {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 8vw;
-        font-weight: bold;
-        color: white;
-      }
-
-      .subtitle {
-        font-size: 4vw;
-        margin-top: 10px;
-        color: white;
-      }
-
-      .content {
-        padding: 80px 20px 20px;
-        font-size: 2.5vw;
-        color: white;
-      }
-
-      .handwritten-text {
-        font-family: "Dancing Script", cursive;
-        font-size: 2rem;
-        color: white;
-        margin-top: 10px;
-      }
-
-      .team-description {
-        font-size: 1rem;
-        max-width: 90%;
-        margin: 10px auto;
-        color: white;
-      }
-
-      .background-image {
-        width: 100%;
-        height: 300px;
-        background-image: url("תיקייה/images.jpg");
-        background-size: cover;
-        background-position: center;
-        margin-top: 20px;
-      }
-
-      /* כפתור הלוגו עם אנימציית התנודדות מוגברת */
-      .logo-button {
-        position: fixed;
-        top: 80px;
-        right: 20px;
-        z-index: 1001;
-        animation: sway 2.5s ease-in-out infinite alternate;
-      }
-
+    }
+    @media (max-width: 600px) {
       .logo-button img {
-        width: 120px;
-        height: auto;
-        cursor: pointer;
-        transition: transform 0.4s ease, box-shadow 0.3s ease;
+        width: 90px;
       }
-
-      .logo-button img:hover {
-        transform: translateY(-10px) rotate(-25deg) scale(1.1);
-        box-shadow: 0 6px 18px rgba(255, 255, 255, 0.5);
-        animation-play-state: paused; /* עוצר את התנודה כשעוברים עכבר */
+    }
+    /* רספונסיביות */
+    @media (max-width: 768px) {
+      nav a {
+        font-size: 1rem;
+        padding: 8px 15px;
+        margin: 5px;
       }
-
-      @keyframes sway {
-        0% {
-          transform: rotate(-15deg);
-        }
-        50% {
-          transform: rotate(15deg);
-        }
-        100% {
-          transform: rotate(-15deg);
-        }
+      .overlay {
+        font-size: 10vw;
       }
-
-      @media (max-width: 600px) {
-        .logo-button img {
-          width: 90px;
-        }
+      .subtitle {
+        font-size: 5vw;
       }
-
-      /* רספונסיביות */
-      @media (max-width: 768px) {
-        nav a {
-          font-size: 1rem;
-          padding: 8px 15px;
-          margin: 5px;
-        }
-
-        .overlay {
-          font-size: 10vw;
-        }
-
-        .subtitle {
-          font-size: 5vw;
-        }
-
-        .content {
-          font-size: 1.2rem;
-        }
-
-        .handwritten-text {
-          font-size: 1.5rem;
-        }
-
-        .team-description {
-          font-size: 0.9rem;
-        }
-
-        .background-image {
-          height: 200px;
-        }
+      .content {
+        font-size: 1.2rem;
       }
-
-      @media (max-width: 480px) {
-        .overlay {
-          font-size: 12vw;
-        }
-
-        .subtitle {
-          font-size: 6vw;
-        }
-
-        .content {
-          font-size: 1rem;
-        }
-
-        .handwritten-text {
-          font-size: 1.2rem;
-        }
-
-        .team-description {
-          font-size: 0.85rem;
-        }
+      .handwritten-text {
+        font-size: 1.5rem;
       }
-    </style>
-  </head>
-  <body>
-    <a href="index.html" class="logo-button" title="חזור לדף הראשי">
-      <img src="תיקייה/לוגו.png" alt="חזור לדף הראשי" />
-    </a>
+      .team-description {
+        font-size: 0.9rem;
+      }
+      .background-image {
+        height: 200px;
+      }
+    }
+    @media (max-width: 480px) {
+      .overlay {
+        font-size: 12vw;
+      }
+      .subtitle {
+        font-size: 6vw;
+      }
+      .content {
+        font-size: 1rem;
+      }
+      .handwritten-text {
+        font-size: 1.2rem;
+      }
+      .team-description {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="logo-button" title="חזור לדף הראשי">
+    <img src="תיקייה/לוגו.png" alt="חזור לדף הראשי" />
+  </a>
 
-    <nav>
-      <a href="סרטון.html" onclick="changeColor(this)">מידע וחדשות</a>
-      <a href="dovrut.html" onclick="changeColor(this)">דוברויות</a>
-      <a href="truma.html" onclick="changeColor(this)">תרומות</a>
-      <a href="יצירת קשר.html" onclick="changeColor(this)">צור קשר</a>
-    </nav>
+  <nav>
+    <a href="סרטון.html" onclick="changeColor(this)">מידע וחדשות</a>
+    <a href="dovrut.html" onclick="changeColor(this)">דוברויות</a>
+    <a href="truma.html" onclick="changeColor(this)">תרומות</a>
+    <a href="יצירת קשר.html" onclick="changeColor(this)">צור קשר</a>
+  </nav>
 
-    <div class="container">
-      <video autoplay muted playsinline loop>
-        <source src="https://yonikerb.github.io/tzevet/101/101.mp4" type="video/mp4" />
-        הדפדפן שלך לא תומך בווידאו.
-      </video>
-      <div class="overlay">
-        צוות חץ
-        <div class="subtitle">חוד החנית של ארגוני ההצלה</div>
-      </div>
+  <div class="container">
+    <video id="backgroundVideo" muted playsinline loop>
+      <source src="https://yonikerb.github.io/tzevet/101/101.mp4" type="video/mp4" />
+      הדפדפן שלך לא תומך בווידאו.
+    </video>
+    <div class="overlay">
+      צוות חץ
+      <div class="subtitle">חוד החנית של ארגוני ההצלה</div>
     </div>
+  </div>
 
-    <div class="content">
-      <div>צוות חץ</div>
-      <div class="handwritten-text">הסיפור שלנו</div>
-      <div class="team-description">
-        <p>הכנס את הטקסט שלך כאן.</p>
-      </div>
+  <div class="content">
+    <div>צוות חץ</div>
+    <div class="handwritten-text">הסיפור שלנו</div>
+    <div class="team-description">
+      <p>הכנס את הטקסט שלך כאן.</p>
     </div>
+  </div>
 
-    <div class="background-image"></div>
+  <div class="background-image"></div>
 
-    <script>
-      function changeColor(element) {
-        const buttons = document.querySelectorAll("nav a");
-        buttons.forEach((button) => button.classList.remove("active"));
-        element.classList.add("active");
+  <script>
+    function changeColor(element) {
+      const buttons = document.querySelectorAll("nav a");
+      buttons.forEach((button) => button.classList.remove("active"));
+      element.classList.add("active");
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const video = document.getElementById('backgroundVideo');
+      const playPromise = video.play();
+
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          video.style.display = 'block';
+          document.querySelector('.container').style.background = 'none';
+        }).catch((error) => {
+          console.log('וידאו לא הצליח להתחיל באופן אוטומטי:', error);
+          video.style.display = 'none';
+        });
       }
-    </script>
-  </body>
+    });
+  </script>
+</body>
 </html>
