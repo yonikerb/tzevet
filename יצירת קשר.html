@@ -10,73 +10,156 @@
       height: 100%;
       margin: 0;
       padding: 0;
+    }
+
+    body {
       font-family: 'Assistant', sans-serif;
-      background: linear-gradient(135deg, #fff, #f8f8f8);
+      color: #fff;
+      background: url('תיקייה/00.jpg') no-repeat center center/cover;
+      position: relative;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 2;
       display: flex;
       align-items: center;
       justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
     }
 
-    form {
-      background: #ffffffcc;
-      backdrop-filter: blur(8px);
-      padding: 40px;
+    .container {
+      width: 100%;
+      max-width: 700px;
+      background: rgba(255, 255, 255, 0.12);
       border-radius: 16px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-      max-width: 400px;
-      width: 90%;
-    }
-
-    form h2 {
-      margin-top: 0;
-      margin-bottom: 20px;
-      color: #d32f2f;
+      backdrop-filter: blur(7px);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+      padding: 50px 40px;
       text-align: center;
     }
 
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      font-size: 1em;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      box-sizing: border-box;
+    header {
+      font-size: 2.8em;
+      margin-bottom: 25px;
+      color: #ffdddd;
+      text-shadow: 0 0 8px #ff8888;
     }
 
-    button {
-      background-color: #d32f2f;
-      color: #fff;
-      padding: 14px;
-      border: none;
-      border-radius: 8px;
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 16px;
       font-size: 1.1em;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.95);
+      color: #000;
+    }
+
+    .contact-form button {
+      padding: 16px;
+      font-size: 1.3em;
+      border: none;
+      border-radius: 10px;
       cursor: pointer;
-      width: 100%;
-      transition: background 0.3s, transform 0.2s;
+      background: linear-gradient(90deg, #ff7f7f, #ffcccc);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    button:hover {
-      background-color: #b71c1c;
-      transform: scale(1.03);
+    .contact-form button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 128, 128, 0.6);
     }
 
-    @media (max-width: 500px) {
-      form {
-        padding: 25px;
+    .contact-icons {
+      position: fixed;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 3;
+    }
+
+    .contact-icons a {
+      background: none;
+      border: none;
+      box-shadow: none;
+      width: auto;
+      height: auto;
+      transition: transform 0.3s, filter 0.4s;
+    }
+
+    .contact-icons a:hover {
+      transform: scale(1.15) translateY(-4px);
+      filter: brightness(1.7) drop-shadow(0 0 6px #fff);
+    }
+
+    .contact-icons a:active {
+      transform: scale(0.95) translateY(2px);
+      filter: brightness(2) drop-shadow(0 0 10px #ff9999);
+    }
+
+    .contact-icons img {
+      width: 48px;
+      height: 48px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 30px 20px;
+      }
+
+      .contact-icons {
+        right: 10px;
       }
     }
   </style>
 </head>
 <body>
+  <div class="overlay"></div>
 
-  <form onsubmit="sendEmail(event)">
-    <h2>צור קשר</h2>
-    <input type="text" name="from_name" placeholder="שם מלא" required>
-    <input type="email" name="from_email" placeholder="אימייל" required>
-    <textarea name="message" rows="5" placeholder="ההודעה שלך..." required></textarea>
-    <button type="submit">שלח</button>
-  </form>
+  <div class="wrapper">
+    <div class="container">
+      <header>צור קשר</header>
+      <form class="contact-form" onsubmit="sendEmail(event)">
+        <input type="text" name="from_name" placeholder="שם מלא" required>
+        <input type="email" name="from_email" placeholder="אימייל" required>
+        <textarea name="message" rows="5" placeholder="כתוב כאן..." required></textarea>
+        <button type="submit">שלח</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="contact-icons">
+    <a href="https://wa.me/123456789" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="וואטסאפ">
+    </a>
+    <a href="mailto:someone@example.com">
+      <img src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico" alt="Gmail">
+    </a>
+    <a href="tel:123456789">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Circle-icons-phone.svg/1024px-Circle-icons-phone.svg.png" alt="טלפון">
+    </a>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>
@@ -95,6 +178,5 @@
         });
     }
   </script>
-
 </body>
 </html>
