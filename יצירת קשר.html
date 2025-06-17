@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>צור קשר</title>
   <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="תיקייה/לוגו.png" />
   <style>
     html, body {
       height: 100%;
@@ -123,6 +124,34 @@
       height: 48px;
     }
 
+    /* כפתור לוגו עם אנימציית התנודדות */
+    .logo-button {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      z-index: 1001;
+      animation: sway 2.5s ease-in-out infinite alternate;
+    }
+
+    .logo-button img {
+      width: 120px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.4s ease, box-shadow 0.3s ease;
+    }
+
+    .logo-button img:hover {
+      transform: translateY(-10px) rotate(-25deg) scale(1.1);
+      box-shadow: 0 6px 18px rgba(255, 255, 255, 0.5);
+      animation-play-state: paused;
+    }
+
+    @keyframes sway {
+      0% { transform: rotate(-15deg); }
+      50% { transform: rotate(15deg); }
+      100% { transform: rotate(-15deg); }
+    }
+
     @media (max-width: 600px) {
       .container {
         padding: 30px 20px;
@@ -136,10 +165,20 @@
         width: 32px;
         height: 32px;
       }
+
+      .logo-button img {
+        width: 90px;
+      }
     }
   </style>
 </head>
 <body>
+
+  <!-- כפתור לוגו קופץ לחזרה לעמוד הראשי -->
+  <a href="index.html" class="logo-button" title="חזור לדף הראשי">
+    <img src="תיקייה/לוגו.png" alt="חזור לדף הראשי" />
+  </a>
+
   <div class="overlay"></div>
 
   <div class="wrapper">
